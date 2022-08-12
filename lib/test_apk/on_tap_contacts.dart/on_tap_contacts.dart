@@ -78,23 +78,28 @@ class _OnTapContactsPageState extends State<OnTapContactsPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("E-mail"),
+                _itemTextField("E-mail",
+                    "${context.read<ContactsProvider>().listContacts[widget.index].email}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField('Phone number'),
+                _itemTextField('Phone number',
+                    "${context.read<ContactsProvider>().listContacts[widget.index].phone}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("Website"),
+                _itemTextField("Website",
+                    "${context.read<ContactsProvider>().listContacts[widget.index].website}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("Company"),
+                _itemTextField("Company",
+                    "${context.read<ContactsProvider>().listContacts[widget.index].company!.name}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("Adress"),
+                _itemTextField("Adress",
+                    "${context.read<ContactsProvider>().listContacts[widget.index].address!.city}"),
               ],
             ),
           ),
@@ -103,10 +108,12 @@ class _OnTapContactsPageState extends State<OnTapContactsPage> {
     );
   }
 
-  TextField _itemTextField(String text) {
+  TextField _itemTextField(String text, String text2) {
+    controller.text = text2;    
     return TextField(
       readOnly: true,
       controller: controller,
+      style: kTextStyle(size: 15, color: Colors.white),
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white, width: 1.0),
