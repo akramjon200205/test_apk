@@ -80,12 +80,13 @@ class _ShowResultPageState extends State<ShowResultPage> {
     return Container(
       height: size.height * 0.2,
       width: size.width * 0.95,
+      // padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.indigo[800],
         borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
             leading: const CircleAvatar(
@@ -104,12 +105,15 @@ class _ShowResultPageState extends State<ShowResultPage> {
               ),
             ),
           ),
-          Text(
-            "${context.watch<OnTapContainerProvider>().listOnTapContainerModel[numbers[index]].body}",
-            style: kTextStyle(
-              size: 12,
-              color: Colors.white,
-              fontWeight: FontWeight.normal,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "${context.watch<OnTapContainerProvider>().listOnTapContainerModel[numbers[index]].body}",
+              style: kTextStyle(
+                size: 12,
+                color: Colors.white,
+                fontWeight: FontWeight.normal,
+              ),
             ),
           ),
         ],

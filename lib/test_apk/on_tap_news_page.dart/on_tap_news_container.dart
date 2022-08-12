@@ -42,92 +42,99 @@ class _OnTapNewsPageContainerState extends State<OnTapNewsPageContainer> {
                     ),
                   ),
                 ),
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      widget.string,
-                      style: kTextStyle(
-                        size: 20,
-                        color: Colors.white,
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      widget.bodys,
-                      style: kTextStyle(
-                        size: 12,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
+                      Text(
+                        widget.string,
+                        style: kTextStyle(
+                          size: 20,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          _itemConainer(size, 0),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          _itemConainer(size, 1),
-                        ],
+                      const SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ShowResultPage(widget.string, widget.id),
+                      Text(
+                        widget.bodys,
+                        style: kTextStyle(
+                          size: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            _itemConainer(size, 0),
+                            const SizedBox(
+                              height: 20,
                             ),
-                          );
-                        },
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            height: size.height * 0.08,
-                            width: double.infinity,
-                            padding: const EdgeInsets.only(
-                              left: 20,
-                              right: 25,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.indigo,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Show me 5 resulst',
-                                  style: kTextStyle(
-                                    size: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400,
+                            _itemConainer(size, 1),
+                          ],
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ShowResultPage(widget.string, widget.id),
+                              ),
+                            );
+                          },
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              height: size.height * 0.08,
+                              width: double.infinity,
+                              padding: const EdgeInsets.only(
+                                left: 20,
+                                right: 25,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.indigo,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Show me 5 resulst',
+                                    style: kTextStyle(
+                                      size: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                                const Icon(
-                                  Icons.remove_red_eye,
-                                  size: 25,
-                                  color: Colors.white,
-                                ),
-                              ],
+                                  const Icon(
+                                    Icons.remove_red_eye,
+                                    size: 25,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
             : Text(
@@ -147,6 +154,7 @@ class _OnTapNewsPageContainerState extends State<OnTapNewsPageContainer> {
       numbers.add(i);
     }
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       height: size.height * 0.2,
       width: size.width * 0.95,
       decoration: BoxDecoration(

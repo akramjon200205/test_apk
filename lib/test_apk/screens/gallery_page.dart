@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/providers/gallery_provider.dart';
+import 'package:test_app/test_apk/on_tap_gallery.dart/on_tap_gallery_page.dart';
 import 'package:test_app/utills/contants.dart';
 
 class GalleryPage extends StatefulWidget {
@@ -30,27 +31,37 @@ class _GalleryPageState extends State<GalleryPage> {
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10),
             itemCount: provider.listGallery.length,
-            itemBuilder: (BuildContext ctx, index) {
-              return Container(
-                  padding: const EdgeInsets.all(10),
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        provider.listGallery[index].title!,
-                        style: kTextStyle(
-                          size: 14,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
+            itemBuilder: (BuildContext context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  OnTapGalleryPage(index),
+                    ),
+                  );
+                },
+                child: Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          provider.listGallery[index].title!,
+                          style: kTextStyle(
+                            size: 14,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                    ],
-                  ));
+                      ],
+                    )),
+              );
             });
       },
     );

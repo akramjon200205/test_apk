@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/providers/contacts_provider.dart';
+import 'package:test_app/test_apk/on_tap_contacts.dart/on_tap_contacts.dart';
 
 import 'package:test_app/utills/contants.dart';
 
@@ -29,7 +30,14 @@ class _ContactsPageState extends State<ContactsPage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OnTapContactsPage(index),
+                      ),
+                    );
+                  },
                   child: ListTile(
                     leading: const Icon(
                       Icons.person,

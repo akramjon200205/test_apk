@@ -36,12 +36,12 @@ class _MainScreenState extends State<MainScreen>
     return Consumer<BottomNavigationBarProvider>(
       builder: (context, provider, child) {
         return Scaffold(
-          backgroundColor: appBarColor,
+          backgroundColor: backgroundColor,
           appBar: AppBar(
-            backgroundColor: backgroundColor,
+            backgroundColor: appBarColor,
             centerTitle: true,
             title: Text(
-              'this is appbar',
+              provider.appBarText(),
               style: kTextStyle(
                 size: 20,
                 color: Colors.white,
@@ -57,7 +57,7 @@ class _MainScreenState extends State<MainScreen>
                       ? const CheckPage()
                       : const ContactsPage(),
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: provider.currentIndex,
+            currentIndex: provider.currentIndex!,
             onTap: (index) {
               provider.currentIndex = index;
               provider.updatePage();
