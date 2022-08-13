@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/providers/check_page_provider.dart';
@@ -33,25 +32,43 @@ class _CheckPageState extends State<CheckPage> {
           ? ListView.builder(
               itemCount: 30,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  leading: Checkbox(
-                      checkColor: Colors.black,
-                      fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: provider.isChecked,
-                      onChanged: (bool? value) {
-                        provider.isChecked = value!;
-                        provider.updatePage();
-                      }),
-                  title: Text(
-                    "${provider.listCheck[index].title}",
-                    style: kTextStyle(
-                      size: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                return Column(
+                  children: [
+                    Container(
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: (provider.listCheck[index].completed == true
+                            ? appBarColor
+                            : null),
+                      ),
+                      child: ListTile(
+                        leading: Checkbox(
+                          checkColor: Colors.black,
+                          fillColor:
+                              MaterialStateProperty.resolveWith(getColor),
+                          value: provider.listCheck[index].completed,
+                          onChanged: (bool? value) {
+                            // provider.isChecked = value!;
+                            // provider.updatePage();
+                          },
+                        ),
+                        title: Text(
+                          "${provider.listCheck[index].title}",
+                          style: kTextStyle(
+                            size: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 );
-              })
+              },
+            )
           : const Center(
               child: CircularProgressIndicator(
                 color: Colors.white,

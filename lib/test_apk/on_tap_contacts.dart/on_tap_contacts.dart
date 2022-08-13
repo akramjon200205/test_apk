@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/providers/contacts_provider.dart';
+import 'package:test_app/test_apk/on_tap_contacts.dart/text_field_func.dart';
 import 'package:test_app/utills/contants.dart';
 
 class OnTapContactsPage extends StatefulWidget {
@@ -12,14 +13,7 @@ class OnTapContactsPage extends StatefulWidget {
 }
 
 class _OnTapContactsPageState extends State<OnTapContactsPage> {
-  TextEditingController controller = TextEditingController();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    controller.text = "Contacts";
-    super.initState();
-  }
+  var provider = ContactsProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -78,57 +72,33 @@ class _OnTapContactsPageState extends State<OnTapContactsPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("E-mail",
-                    "${context.read<ContactsProvider>().listContacts[widget.index].email}"),
+                TextFieldFunc(
+                    "E-mail", "${provider.listContacts[widget.index].email}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField('Phone number',
-                    "${context.read<ContactsProvider>().listContacts[widget.index].phone}"),
+                TextFieldFunc('Phone number',
+                    "${provider.listContacts[widget.index].phone}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("Website",
-                    "${context.read<ContactsProvider>().listContacts[widget.index].website}"),
+                TextFieldFunc('Website',
+                    "${provider.listContacts[widget.index].website}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("Company",
-                    "${context.read<ContactsProvider>().listContacts[widget.index].company!.name}"),
+                TextFieldFunc('Company',
+                    "${provider.listContacts[widget.index].company!.name}"),
                 const SizedBox(
                   height: 20,
                 ),
-                _itemTextField("Adress",
-                    "${context.read<ContactsProvider>().listContacts[widget.index].address!.city}"),
+                TextFieldFunc('Adress',
+                    "${provider.listContacts[widget.index].address!.street}"),
               ],
             ),
           ),
         );
       },
-    );
-  }
-
-  TextField _itemTextField(String text, String text2) {
-    controller.text = text2;    
-    return TextField(
-      readOnly: true,
-      controller: controller,
-      style: kTextStyle(size: 15, color: Colors.white),
-      decoration: InputDecoration(
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 1.0),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 1.0),
-        ),
-        // border: const OutlineInputBorder(),
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        labelText: text,
-        labelStyle: kTextStyle(
-          size: 14,
-          color: Colors.white70,
-        ),
-      ),
     );
   }
 }

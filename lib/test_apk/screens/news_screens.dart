@@ -78,13 +78,7 @@ class _NewsPageState extends State<NewsPage> {
                   );
                 },
               )
-            : Text(
-                "scsacs",
-                style: kTextStyle(
-                  size: 20,
-                  color: Colors.white,
-                ),
-              );
+            : const SizedBox.shrink();
       },
     );
   }
